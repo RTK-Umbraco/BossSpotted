@@ -6,8 +6,8 @@ namespace BossSpotted.Controllers
 {
     public class BossSpottedController : Controller
     {
-        private readonly IBossSpottedHub _bossSpottedHub;
-        public BossSpottedController(IBossSpottedHub bossSpottedHub)
+        private readonly BossSpottedHub _bossSpottedHub;
+        public BossSpottedController(BossSpottedHub bossSpottedHub)
         {
             _bossSpottedHub = bossSpottedHub;
         }

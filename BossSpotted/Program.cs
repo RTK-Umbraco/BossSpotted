@@ -6,7 +6,7 @@ builder.Services.AddSignalR();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddSingleton<BossSpottedHub, BossSpottedHub>();
+builder.Services.AddSingleton<BossSpottedHub>();
 
 
 var app = builder.Build();
@@ -31,6 +31,5 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapHub<BossSpottedHub>("/bossSpottedHub");
-
 
 app.Run();
