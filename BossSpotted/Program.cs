@@ -6,6 +6,9 @@ builder.Services.AddSignalR();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddSingleton<BossSpottedHub, BossSpottedHub>();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -29,6 +32,5 @@ app.MapControllerRoute(
 
 app.MapHub<BossSpottedHub>("/bossSpottedHub");
 
-builder.Services.AddSingleton<BossSpottedHub, BossSpottedHub>();
 
 app.Run();
