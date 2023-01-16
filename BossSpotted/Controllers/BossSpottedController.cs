@@ -1,6 +1,4 @@
-﻿using BossSpotted.Hubs;
-using BossSpotted.Hubs.Interface;
-using BossSpotted.Models.Interface;
+﻿using BossSpotted.Models.Interface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BossSpotted.Controllers

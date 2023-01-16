@@ -36,5 +36,4 @@ app.MapControllerRoute(
 
 app.MapHub<BossSpottedHub>("/bossSpottedHub");
 
-
 app.Run();
