@@ -14,6 +14,9 @@ connection.on("ReceiveMessage", function (user, message) {
     li.textContent = `${user} says ${message}`;
     blinkScreen();
 });
+connection.on("BossHasBeenSpotted", function () {
+    blinkScreen();
+});
 
 connection.start().then(function () {
     document.getElementById("sendButton").disabled = false;
