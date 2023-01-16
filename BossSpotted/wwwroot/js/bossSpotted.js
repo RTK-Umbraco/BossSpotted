@@ -4,6 +4,7 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/bossSpottedHub").b
 
 //Disable the send button until connection is established.
 document.getElementById("sendButton").disabled = true;
+isSignalConnected(false);
 
 connection.on("ReceiveMessage", function (user, message) {
     var li = document.createElement("li");
@@ -16,6 +17,7 @@ connection.on("ReceiveMessage", function (user, message) {
 
 connection.start().then(function () {
     document.getElementById("sendButton").disabled = false;
+    isSignalConnected(true);
 }).catch(function (err) {
     return console.error(err.toString());
 });
