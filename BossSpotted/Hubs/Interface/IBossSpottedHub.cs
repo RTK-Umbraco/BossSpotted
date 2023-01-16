@@ -4,6 +4,6 @@ namespace BossSpotted.Hubs.Interface
 {
     public interface IBossSpottedHub
     {
-        Task<IActionResult> Index();
+        Task SendMessage(string user, string message);
     }
 }
