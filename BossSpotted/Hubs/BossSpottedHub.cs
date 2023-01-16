@@ -1,17 +1,18 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using BossSpotted.Hubs.Interface;
+using Microsoft.AspNetCore.SignalR;
 
 namespace BossSpotted.Hubs
 {
-    public class BossSpottedHub : Hub
+    public class BossSpottedHub : Hub, IBossSpottedHub
     {
-        IHubContext<BossSpottedHub> _hubContext;
+        private readonly IHubContext<BossSpottedHub> _hubContext;
         public BossSpottedHub(IHubContext<BossSpottedHub> hubContext)
         {
             this._hubContext = hubContext;
         }
-        public async Task SendMessage(string user, string message)
+        public async Task BossSpotted()
         {
-            await Clients.All.SendAsync("ReceiveMessage", user, message);
+            await _hubContext.Clients.All.SendAsync("BossHasBeenSpotted");
         }
     }
 }
