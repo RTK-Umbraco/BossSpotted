@@ -1,4 +1,7 @@
 using BossSpotted.Hubs;
+using BossSpotted.Hubs.Interface;
+using BossSpotted.Models;
+using BossSpotted.Models.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSignalR();
@@ -6,7 +9,8 @@ builder.Services.AddSignalR();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddSingleton<BossSpottedHub, BossSpottedHub>();
+builder.Services.AddSingleton<IBossSpottedHub, BossSpottedHub>();
+builder.Services.AddSingleton<IBossSpottedModel, BossSpottedModel>();
 
 
 var app = builder.Build();

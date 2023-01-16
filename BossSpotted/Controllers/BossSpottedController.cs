@@ -1,20 +1,22 @@
 ﻿using BossSpotted.Hubs;
 using BossSpotted.Hubs.Interface;
+using BossSpotted.Models.Interface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BossSpotted.Controllers
 {
     public class BossSpottedController : Controller
     {
-        private readonly IBossSpottedHub _bossSpottedHub;
-        public BossSpottedController(IBossSpottedHub bossSpottedHub)
+        private readonly IBossSpottedModel _bossSpottedModel;
+
+        public BossSpottedController(IBossSpottedModel bossSpottedModel)
         {
-            _bossSpottedHub = bossSpottedHub;
+            _bossSpottedModel = bossSpottedModel;
         }
+
         public async Task<IActionResult> Index()
         {
-            //this.HubContext.Clients.All.InvokeAsync("Completed");
-            await _bossSpottedHub.SendMessage("Daniel", "Benjamin");
+            await _bossSpottedModel.Spotted();
             return View();
         }
     }

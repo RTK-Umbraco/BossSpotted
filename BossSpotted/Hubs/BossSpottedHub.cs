@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using BossSpotted.Hubs.Interface;
+using Microsoft.AspNetCore.SignalR;
 
 namespace BossSpotted.Hubs
 {
-    public class BossSpottedHub : Hub
+    public class BossSpottedHub : Hub, IBossSpottedHub
     {
         public async Task SendMessage(string user, string message)
         {
