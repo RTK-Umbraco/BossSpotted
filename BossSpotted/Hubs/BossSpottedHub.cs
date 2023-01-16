@@ -10,9 +10,9 @@ namespace BossSpotted.Hubs
         {
             this._hubContext = hubContext;
         }
-        public async Task BossSpotted(string user, string message)
+        public async Task BossSpotted()
         {
-            await _hubContext.Clients.All.SendAsync("BossHasBeenSpotted", user, message);
+            await _hubContext.Clients.All.SendAsync("BossHasBeenSpotted");
         }
     }
 }

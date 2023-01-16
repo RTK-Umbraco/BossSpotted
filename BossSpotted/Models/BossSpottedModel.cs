@@ -12,9 +12,9 @@ namespace BossSpotted.Models
             _bossSpottedHub = bossSpottedHub;
         }
 
-        public async Task Spotted()
+        public async Task BossSpotted()
         {
-            await _bossSpottedHub.SendMessage("Daniel", "Benjamin");
+            await _bossSpottedHub.BossSpotted();
         }
     }
 }

@@ -14,7 +14,7 @@ namespace BossSpotted.Controllers
 
         public async Task<IActionResult> Index()
         {
-            await _bossSpottedModel.Spotted();
+            await _bossSpottedModel.BossSpotted();
             return View();
         }
     }
