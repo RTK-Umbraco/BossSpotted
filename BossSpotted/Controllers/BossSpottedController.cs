@@ -22,7 +22,10 @@ namespace BossSpotted.Controllers
 
         public async Task<IActionResult> Index()
         {
-            await _bossSpottedModel.BossSpotted();
+            var id = 1;
+            var seriousness = 1;
+            await _bossSpottedModel.BossSpotted(id, seriousness);
+
             CreateNewSighting test = new CreateNewSighting(this._loggerFactory, this._context);
             test.Create(20);
             return View();
