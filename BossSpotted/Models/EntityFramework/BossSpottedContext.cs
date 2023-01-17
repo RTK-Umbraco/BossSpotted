@@ -12,10 +12,10 @@ namespace BossSpotted.Models.EntityFramework
             //Database.SetInitializer<BossSpottedContext>(new DropCreateDatabaseAlways<BossSpottedContext>());
             //Database.SetInitializer<BossSpottedContext>(new CreateDatabaseIfNotExists<BossSpottedContext>());
             Database.SetInitializer<BossSpottedContext>(new DropCreateDatabaseIfModelChanges<BossSpottedContext>());
+            
         }
 
         public DbSet<Person> Persons { get; set; }
         public DbSet<Sighting> Sightings { get; set; }
-        public DbSet<SightingSeriousness> SightingsSeriousness { get; set; }
     }
 }
