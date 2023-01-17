@@ -16,11 +16,13 @@ namespace BossSpotted.Models
             _registerNewSighting = registerNewSighting;
         }
 
-        public void BossSpotted(int id, int seriousness)
+        public bool BossSpotted(int id, int seriousness)
         {
             var sightingSeriousness = MapSightingSeriousness(seriousness);
 
-            _registerNewSighting.Register(id, sightingSeriousness);
+            var isNewSigthingRegistered = _registerNewSighting.Register(id, sightingSeriousness);
+
+            return isNewSigthingRegistered;
         }
 
         private static SightingSeriousness MapSightingSeriousness(int seroiusness)

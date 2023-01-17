@@ -2,6 +2,6 @@
 {
     public interface IBossSpottedModel
     {
-        void BossSpotted(int id, int seriousness);
+        bool BossSpotted(int id, int seriousness);
     }
 }

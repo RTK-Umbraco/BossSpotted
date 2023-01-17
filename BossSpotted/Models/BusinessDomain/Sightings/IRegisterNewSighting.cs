@@ -5,6 +5,6 @@ namespace BossSpotted.Models.BusinessDomain.Sightings
 {
     public interface IRegisterNewSighting
     {
-        void Register(int personId, SightingSeriousness seriousness);
+        bool Register(int personId, SightingSeriousness seriousness);
     }
 }

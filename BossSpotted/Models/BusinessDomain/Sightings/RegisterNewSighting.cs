@@ -16,7 +16,7 @@ namespace BossSpotted.Models.BusinessDomain.Sightings
             _context = context;
         }
 
-        public void Register(int personId, SightingSeriousness seriousness)
+        public bool Register(int personId, SightingSeriousness seriousness)
         {
             this._logger.LogInformation("Registering new sighting");
             Person person = GetOrSetPerson(personId);
