@@ -1,4 +1,5 @@
 ﻿using BossSpotted.Hubs.Interface;
+using BossSpotted.Models.EntityFramework;
 using Microsoft.AspNetCore.SignalR;
 
 namespace BossSpotted.Hubs
@@ -10,9 +11,9 @@ namespace BossSpotted.Hubs
         {
             this._hubContext = hubContext;
         }
-        public async Task BossSpotted()
+        public async Task BossSpotted(SightingSeriousness seriousness)
         {
-            await _hubContext.Clients.All.SendAsync("BossHasBeenSpotted");
+            await _hubContext.Clients.All.SendAsync("BossHasBeenSpotted", (int)seriousness);
         }
     }
 }

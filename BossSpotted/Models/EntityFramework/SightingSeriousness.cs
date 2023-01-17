@@ -1,5 +1,4 @@
-﻿using BossSpotted.Models.Interface;
-
+﻿
 namespace BossSpotted.Models.EntityFramework
 {
     public enum SightingSeriousness

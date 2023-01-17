@@ -1,39 +1,39 @@
-﻿using BossSpotted.Hubs.Interface;
-using BossSpotted.Models.BusinessDomain.Sightings;
+﻿using BossSpotted.Models.BusinessDomain.Sightings;
 using BossSpotted.Models.EntityFramework;
-using BossSpotted.Models.EntityFrameWork;
-using BossSpotted.Models.Interface;
-using Microsoft.Win32;
 
 namespace BossSpotted.Models
 {
-    public class BossSpottedModel : IBossSpottedModel
+    public class BossSpottedModel
     {
-        private readonly IRegisterNewSighting _registerNewSighting;
+        private readonly ILoggerFactory _IloggerFactory;
+        private readonly BossSpottedContext _context;
 
-        public BossSpottedModel(IRegisterNewSighting registerNewSighting)
+
+        public BossSpottedModel(ILoggerFactory iloggerFactory, BossSpottedContext context)
         {
-            _registerNewSighting = registerNewSighting;
+            this._IloggerFactory = iloggerFactory;
+            this._context = context;
         }
 
         public bool BossSpotted(int id, int seriousness)
         {
-            var sightingSeriousness = MapSightingSeriousness(seriousness);
+            RegisterNewSighting registerNewSighting = new RegisterNewSighting(_IloggerFactory, _context);
+            SightingSeriousness sightingSeriousness = MapSightingSeriousness(seriousness);
 
-            var isNewSigthingRegistered = _registerNewSighting.Register(id, sightingSeriousness);
+            bool isNewSightingRegistered = registerNewSighting.Register(id, sightingSeriousness);
 
-            return isNewSigthingRegistered;
+            return isNewSightingRegistered;
         }
 
         private static SightingSeriousness MapSightingSeriousness(int seroiusness)
         {
             switch (seroiusness)
             {
-                case 1:
+                case 0:
                     return SightingSeriousness.green;
-                case 2:
+                case 1:
                     return SightingSeriousness.yellow;
-                case 3:
+                case 2:
                     return SightingSeriousness.red;
                 default:
                     return SightingSeriousness.red;

@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BossSpotted.Models.EntityFramework;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BossSpotted.Hubs.Interface
 {
     public interface IBossSpottedHub
     {
-        Task BossSpotted();
+        Task BossSpotted(SightingSeriousness seriousness);
     }
 }

@@ -1,10 +1,8 @@
 using BossSpotted;
 using BossSpotted.Hubs;
 using BossSpotted.Hubs.Interface;
-using BossSpotted.Models;
-using BossSpotted.Models.BusinessDomain;
 using BossSpotted.Models.EntityFramework;
-using BossSpotted.Models.Interface;
+using BossSpotted.Models.Validations;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSignalR();
@@ -20,9 +18,9 @@ builder.Services.Configure<ApplicationSettings>(
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddSingleton<IBossSpottedHub, BossSpottedHub>();
-builder.Services.AddSingleton<IBossSpottedModel, BossSpottedModel>();
 
 builder.Services.AddSingleton<BossSpottedContext>();
+builder.Services.AddSingleton<InputValidation>();
 
 
 var app = builder.Build();

@@ -1,14 +1,13 @@
-﻿using System.Data.Entity.Validation;
-using BossSpotted.Models.EntityFramework;
+﻿using BossSpotted.Models.EntityFramework;
 using BossSpotted.Models.EntityFrameWork;
 
 namespace BossSpotted.Models.BusinessDomain.Sightings
 {
-    public class RegisterNewSighting : IRegisterNewSighting
+    public class RegisterNewSighting
     {
-        private ILogger<RegisterNewSighting> _logger;
+        private readonly ILogger<RegisterNewSighting> _logger;
         private readonly ILoggerFactory _loggerFactory;
-        private BossSpottedContext _context;
+        private readonly BossSpottedContext _context;
         public RegisterNewSighting(ILoggerFactory loggerFactory, BossSpottedContext context)
         {
             _logger = loggerFactory.CreateLogger<RegisterNewSighting>();
