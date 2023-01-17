@@ -1,42 +1,41 @@
 ﻿using BossSpotted.Hubs.Interface;
+using BossSpotted.Models.BusinessDomain.Sightings;
 using BossSpotted.Models.EntityFramework;
 using BossSpotted.Models.EntityFrameWork;
 using BossSpotted.Models.Interface;
+using Microsoft.Win32;
 
 namespace BossSpotted.Models
 {
     public class BossSpottedModel : IBossSpottedModel
     {
-        private readonly IBossSpottedHub _bossSpottedHub;
+        private readonly IRegisterNewSighting _registerNewSighting;
 
-        public BossSpottedModel(IBossSpottedHub bossSpottedHub)
+        public BossSpottedModel(IRegisterNewSighting registerNewSighting)
         {
-            _bossSpottedHub = bossSpottedHub;
+            _registerNewSighting = registerNewSighting;
         }
 
-        public async Task BossSpotted(int id, int seriousness)
+        public void BossSpotted(int id, int seriousness)
         {
-            var personEntity = new Person()
+            var sightingSeriousness = MapSightingSeriousness(seriousness);
+
+            _registerNewSighting.Register(id, sightingSeriousness);
+        }
+
+        private static SightingSeriousness MapSightingSeriousness(int seroiusness)
+        {
+            switch (seroiusness)
             {
-                Id = id,
-            };
-
-            var sightingSeriousness = new SightingSeriousness()
-            {
-                Id = 1,
-                Seriousness = (Seriousness)1,
-            };
-
-            var sighting = new Sighting()
-            {
-                Id = 1,
-                PersonSighted = personEntity,
-                SightingSeriousness = sightingSeriousness
-            };
-
-
-
-            await _bossSpottedHub.BossSpotted();
+                case 1:
+                    return SightingSeriousness.green;
+                case 2:
+                    return SightingSeriousness.yellow;
+                case 3:
+                    return SightingSeriousness.red;
+                default:
+                    return SightingSeriousness.red;
+            }
         }
     }
 }

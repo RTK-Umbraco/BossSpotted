@@ -4,7 +4,7 @@ using BossSpotted.Models.EntityFrameWork;
 
 namespace BossSpotted.Models.BusinessDomain.Sightings
 {
-    public class RegisterNewSighting
+    public class RegisterNewSighting : IRegisterNewSighting
     {
         private ILogger<RegisterNewSighting> _logger;
         private readonly ILoggerFactory _loggerFactory;
@@ -16,14 +16,14 @@ namespace BossSpotted.Models.BusinessDomain.Sightings
             _context = context;
         }
 
-        public void Register(int personId, SightingSeriousness seriousness = SightingSeriousness.red)
+        public void Register(int personId, SightingSeriousness seriousness)
         {
             this._logger.LogInformation("Registering new sighting");
             Person person = GetOrSetPerson(personId);
             Sighting sighting = new Sighting()
             {
                 PersonSighted = person,
-                SightingSeriousness = SightingSeriousness.red
+                SightingSeriousness = seriousness
             };
             _context.Sightings.Add(sighting);
 
@@ -36,7 +36,7 @@ namespace BossSpotted.Models.BusinessDomain.Sightings
                 this._logger.LogError(ex, "");
             }
         }
-        public Person GetOrSetPerson(int personId)
+        private Person GetOrSetPerson(int personId)
         {
             return _context.Persons.FirstOrDefault(x => x.Id == personId) ?? _context.Persons.Add(new Person() { Id = personId });
         }

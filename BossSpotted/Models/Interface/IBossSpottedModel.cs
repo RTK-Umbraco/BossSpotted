@@ -2,6 +2,6 @@
 {
     public interface IBossSpottedModel
     {
-        Task BossSpotted(int id, int seriousness);
+        void BossSpotted(int id, int seriousness);
     }
 }
