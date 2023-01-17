@@ -9,10 +9,13 @@ namespace BossSpotted.Models.EntityFramework
         public BossSpottedContext(IOptions<ApplicationSettings> options) 
             : base(options.Value.bossSpottedOptions.DbConnectionString)
         {
-
+            //Database.SetInitializer<BossSpottedContext>(new DropCreateDatabaseAlways<BossSpottedContext>());
+            //Database.SetInitializer<BossSpottedContext>(new CreateDatabaseIfNotExists<BossSpottedContext>());
+            Database.SetInitializer<BossSpottedContext>(new DropCreateDatabaseIfModelChanges<BossSpottedContext>());
         }
 
-        public DbSet<Person> persons { get; set; }
+        public DbSet<Person> Persons { get; set; }
         public DbSet<Sighting> Sightings { get; set; }
+        public DbSet<SightingSeriousness> SightingsSeriousness { get; set; }
     }
 }

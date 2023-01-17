@@ -2,6 +2,7 @@ using BossSpotted;
 using BossSpotted.Hubs;
 using BossSpotted.Hubs.Interface;
 using BossSpotted.Models;
+using BossSpotted.Models.BusinessDomain;
 using BossSpotted.Models.EntityFramework;
 using BossSpotted.Models.Interface;
 
@@ -9,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSignalR();
 
 builder.Configuration.AddJsonFile($"appsettings.json", false);
-builder.Configuration.AddJsonFile($"appsettings.{Environment.MachineName}.json", true);
+builder.Configuration.AddJsonFile($"appsettings.{Environment.MachineName}.json", false);
 
 builder.Services.AddOptions();
 builder.Services.Configure<ApplicationSettings>(
