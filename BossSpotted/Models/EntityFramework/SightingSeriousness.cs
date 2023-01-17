@@ -2,7 +2,6 @@
 
 namespace BossSpotted.Models.EntityFramework
 {
-
     public enum SightingSeriousness
     {
         green = 0,

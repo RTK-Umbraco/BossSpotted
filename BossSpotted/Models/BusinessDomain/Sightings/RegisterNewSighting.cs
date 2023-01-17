@@ -16,7 +16,7 @@ namespace BossSpotted.Models.BusinessDomain.Sightings
             _context = context;
         }
 
-        public void Register(int personId, SightingSeriousness seriousness = SightingSeriousness.red)
+        public bool Register(int personId, SightingSeriousness seriousness = SightingSeriousness.red)
         {
             this._logger.LogInformation("Registering new sighting");
             Person person = GetOrSetPerson(personId);
@@ -33,8 +33,11 @@ namespace BossSpotted.Models.BusinessDomain.Sightings
             }
             catch (Exception ex)
             {
-                this._logger.LogError(ex, "");
+                this._logger.LogError(ex, "Could not save changes");
+                return false;
             }
+
+            return true;
         }
         public Person GetOrSetPerson(int personId)
         {
