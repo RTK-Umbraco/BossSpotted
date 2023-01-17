@@ -23,7 +23,7 @@ namespace BossSpotted.Models.BusinessDomain.Sightings
             Sighting sighting = new Sighting()
             {
                 PersonSighted = person,
-                SightingSeriousness = SightingSeriousness.red
+                SightingSeriousness = seriousness
             };
             _context.Sightings.Add(sighting);
 
