@@ -33,8 +33,11 @@ namespace BossSpotted.Models.BusinessDomain.Sightings
             }
             catch (Exception ex)
             {
-                this._logger.LogError(ex, "");
+                this._logger.LogError(ex, "Could not save changes");
+                return false;
             }
+
+            return true;
         }
         private Person GetOrSetPerson(int personId)
         {
