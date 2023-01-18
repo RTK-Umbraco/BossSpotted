@@ -15,7 +15,7 @@ namespace BossSpotted.Models.EntityFramework
             
         }
 
-        public DbSet<Person> Persons { get; set; }
+        public DbSet<Person?> Persons { get; set; }
         public DbSet<Sighting> Sightings { get; set; }
     }
 }

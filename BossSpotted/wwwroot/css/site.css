@@ -16,3 +16,11 @@ html {
 body {
   margin-bottom: 60px;
 }
+.dot {
+    height: 15px;
+    width: 15px;
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+    transition-duration: 0.2s;
+}

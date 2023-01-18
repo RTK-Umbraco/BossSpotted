@@ -6,7 +6,7 @@ connection.on("BossHasBeenSpotted", function (seriousness) {
     if(seriousness == 1 || seriousness == 2)
         playAlert();
     blinkScreen(seriousness);
-    setTimeout(stopAlert, 7000)
+    setTimeout(stopAlert, 3000)
 });
 
 

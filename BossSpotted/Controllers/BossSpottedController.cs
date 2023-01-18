@@ -25,15 +25,14 @@ namespace BossSpotted.Controllers
         public async Task<IActionResult> Index(int id, int seriousness)
         {
             if (!this._inputValidation.ValidateSightingSeriousness(seriousness))
-                return Json(false);
+                return BadRequest();
 
             BossSpottedModel bossSpotted = new BossSpottedModel(this._loggerFactory, this._context);
             var isNewSigthingRegistered = bossSpotted.BossSpotted(id, seriousness);
 
             await this._bossSpottedHub.BossSpotted((SightingSeriousness)seriousness);
 
-            return Json(isNewSigthingRegistered);
-
+            return Ok();
         }
     }
 }
