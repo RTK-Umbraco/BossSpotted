@@ -6,8 +6,8 @@ namespace BossSpotted.Models.EntityFramework
 {
     public class BossSpottedContext : DbContext
     {
-        public BossSpottedContext(IOptions<ApplicationSettings> options) 
-            : base(options.Value.bossSpottedOptions.DbConnectionString)
+        public BossSpottedContext(IOptions<BossSpottedOptions> options) 
+            : base(options.Value.DbConnectionString)
         {
             //Database.SetInitializer<BossSpottedContext>(new DropCreateDatabaseAlways<BossSpottedContext>());
             //Database.SetInitializer<BossSpottedContext>(new CreateDatabaseIfNotExists<BossSpottedContext>());
