@@ -6,4 +6,5 @@ function playAlert() {
 
 function stopAlert() {
     audio.pause();
+    audio.currentTime = 0;
 }

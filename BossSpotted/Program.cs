@@ -11,8 +11,8 @@ builder.Configuration.AddJsonFile($"appsettings.json", false);
 builder.Configuration.AddJsonFile($"appsettings.{Environment.MachineName}.json", false);
 
 builder.Services.AddOptions();
-builder.Services.Configure<ApplicationSettings>(
-    builder.Configuration.GetSection("ApplicationSettings"));
+builder.Services.Configure<BossSpottedOptions>(
+    builder.Configuration.GetSection("BossSpottedOptions"));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
